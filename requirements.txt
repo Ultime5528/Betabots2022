@@ -1,0 +1,3 @@
+wpilib~=2022.4.1.6
+pyfrc~=2022.1.5
+pynetworktables~=2021.0.0

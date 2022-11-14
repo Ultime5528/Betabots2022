@@ -28,13 +28,14 @@ class BasePilotable(commands2.SubsystemBase):
         self.x_wheelbase = 0.58 / 2
         self.y_wheelbase = 0.515 / 2
 
-        self.fl_motor = rev.CANSparkMax(Ports.base_pilotable_moteur_fl, rev.MotorType.kBrushless)
-        self.fr_motor = rev.CANSparkMax(Ports.base_pilotable_moteur_fr, rev.MotorType.kBrushless)
-        self.rl_motor = rev.CANSparkMax(Ports.base_pilotable_moteur_rl, rev.MotorType.kBrushless)
-        self.rr_motor = rev.CANSparkMax(Ports.base_pilotable_moteur_rr, rev.MotorType.kBrushless)
+        self.fl_motor = rev.CANSparkMax(Ports.base_pilotable_moteur_fl, rev.CANSparkMaxLowLevel.MotorType.kBrushless)
+        self.fr_motor = rev.CANSparkMax(Ports.base_pilotable_moteur_fr, rev.CANSparkMaxLowLevel.MotorType.kBrushless)
+        self.rl_motor = rev.CANSparkMax(Ports.base_pilotable_moteur_rl, rev.CANSparkMaxLowLevel.MotorType.kBrushless)
+        self.rr_motor = rev.CANSparkMax(Ports.base_pilotable_moteur_rr, rev.CANSparkMaxLowLevel.MotorType.kBrushless)
 
         for motor in [self.fl_motor, self.fr_motor, self.rl_motor, self.rr_motor]:
             motor.restoreFactoryDefaults()
+            motor.setIdleMode(rev.CANSparkMax.IdleMode.kBrake)
 
         self.fr_motor.setInverted(True)
         self.rr_motor.setInverted(True)
@@ -58,7 +59,6 @@ class BasePilotable(commands2.SubsystemBase):
         #     self.gyro = wpilib.ADXRS450_Gyro()
 
         self.drive = wpilib.drive.MecanumDrive(self.fl_motor, self.rl_motor, self.fr_motor, self.rr_motor)
-        self.drive.setRightSideInverted(False)
 
         self.kinematics = MecanumDriveKinematics(
             Translation2d(self.x_wheelbase, self.y_wheelbase),
@@ -80,7 +80,6 @@ class BasePilotable(commands2.SubsystemBase):
             self.rr_motor_sim = SparkMaxSim(self.rr_motor)
             self.gyro_sim_device = SimDeviceSim("navX-Sensor[1]")
             self.gyro_yaw_sim = self.gyro_sim_device.getDouble("Yaw")
-
         self.resetOdometry()
 
     def driveCartesian(self, ySpeed: float, xSpeed: float, zRot: float) -> None:
@@ -155,7 +154,6 @@ class BasePilotable(commands2.SubsystemBase):
         self.rr_motor_sim.setVelocity(self.drive_sim.getRearRightRate())
         self.rr_motor_sim.setPosition(self.drive_sim.getRearRightPosition())
         self.gyro_yaw_sim.set(-self.drive_sim.getHeading().degrees())
-
         self.field.setRobotPose(self.drive_sim.odometry.getPose())
 
     def getAngle(self):
