@@ -11,8 +11,8 @@ class Ports:
     # Gyro
     base_pilotable_gyro = 0
 
-    # PCM
-    trois_dents_piston = (0, 1)
+    # Tireur
+    port_moteur_tireur = 0
 
 
 class _Proprietes:
