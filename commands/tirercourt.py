@@ -5,7 +5,7 @@ from subsystems.tireur import Tireur
 from constants import *
 
 
-class TirerLoin(safecommandbase):
+class TirerCourt(safecommandbase):
     def __init__(self, tireur: Tireur):
         self.tireur = tireur
         self.timer = wpilib.Timer()
@@ -16,10 +16,10 @@ class TirerLoin(safecommandbase):
         self.timer.reset()
 
     def execute(self):
-        self.tireur.tirer(Proprietes.tirer_speed_long)
+        self.tireur.tirer(Proprietes.tirer_speed_court)
 
     def is_finished(self) -> bool:
-        return self.timer.get() >= Proprietes.tirer_temps_loin
+        return self.timer.get() >= Proprietes.tirer_temps_court
 
     def end(self, interrupted: bool) -> None:
         self.tireur.stop()
