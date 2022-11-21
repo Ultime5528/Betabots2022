@@ -159,6 +159,9 @@ class BasePilotable(commands2.SubsystemBase):
     def getAngle(self):
         return -math.remainder(self.gyro.getAngle(), 360.0)
 
+    def getEncoderDistances(self):
+        return [self.fl_encoder.getPosition(), self.fr_encoder.getPosition(), self.rl_encoder.getPosition(), self.rr_encoder.getPosition()]
+
     def getAccelX(self):
         # vec = Vector2d(self.gyro.getWorldLinearAccelX(), self.gyro.getWorldLinearAccelY())
         # vec.rotate(-self.gyro.getYaw())
