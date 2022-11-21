@@ -2,7 +2,7 @@ from networktables.util import ntproperty
 
 
 class Ports:
-    # PWM
+    # CAN
     base_pilotable_moteur_fl = 1
     base_pilotable_moteur_fr = 2
     base_pilotable_moteur_rl = 3
@@ -10,9 +10,6 @@ class Ports:
 
     # Gyro
     base_pilotable_gyro = 0
-
-    # Tireur
-    port_moteur_tireur = 0
 
 
 class _Proprietes:
@@ -25,6 +22,9 @@ class _Proprietes:
     aligner_max_speed = ntproperty("/Proprietes/AlignerMaxSpeed", 0.15, writeDefault=False)
     aligner_error_multiplier = ntproperty("/Proprietes/AlignerErrorMultiplier", 1.5, writeDefault=False)
     aller_max_speed = ntproperty("/Proprietes/AllerMaxSpeed", 0.1, writeDefault=False)
+    aligner_offset = ntproperty("/Proprietes/AlignerOffset", 0.25, writeDefault=True)
+
+    aligner_offset = ntproperty("/Proprietes/AlignerOffset", 0.25, writeDefault=True)
     aligner_offset = ntproperty("/Proprietes/AlignerOffset", 0.25, writeDefault=True)
 
 Proprietes = _Proprietes()
