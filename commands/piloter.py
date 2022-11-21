@@ -1,7 +1,6 @@
 from commands2 import CommandBase
 
 import wpilib
-
 from constants import Proprietes
 from subsystems.basepilotable import BasePilotable
 from utils.safecommandbase import SafeCommandBase
