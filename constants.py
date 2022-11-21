@@ -2,17 +2,21 @@ from networktables.util import ntproperty
 
 
 class Ports:
-    # PWM
+    """
+    Convention : sous_systeme + _ + composante
+    """
+
+    # CAN
     base_pilotable_moteur_fl = 1
     base_pilotable_moteur_fr = 2
     base_pilotable_moteur_rl = 3
     base_pilotable_moteur_rr = 4
 
-    # Gyro
-    base_pilotable_gyro = 0
+    # PWM
+    ...
 
-    # Tireur
-    port_moteur_tireur = 0
+    # DIO
+    ...
 
 
 class _Proprietes:
