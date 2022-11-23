@@ -4,6 +4,7 @@ import commands2
 import wpilib
 
 from commands.piloter import Piloter
+from commands.tourner import Tourner
 from subsystems.basepilotable import BasePilotable
 from commands2.button import JoystickButton
 
@@ -17,6 +18,8 @@ class Robot(commands2.TimedCommandRobot):
         self.xbox_controller = wpilib.Joystick(1)
 
         self.base_pilotable.setDefaultCommand(Piloter(self.base_pilotable, self.stick, self.xbox_controller))
+        JoystickButton(self.stick, 3).whenPressed((Tourner(self.base_pilotable, 90, 1)))
+        JoystickButton(self.stick, 4).whenPressed((Tourner(self.base_pilotable, -90, 1)))
 
 
 
