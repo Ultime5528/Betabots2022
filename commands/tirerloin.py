@@ -11,6 +11,7 @@ class TirerLoin(safecommandbase):
         self.timer = wpilib.Timer()
         self.addRequirements([tireur])
 
+
     def initialize(self):
         self.timer.stop()
         self.timer.reset()
