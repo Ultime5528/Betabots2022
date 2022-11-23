@@ -15,10 +15,8 @@ class DriveDistance(commands2.CommandBase):
 
         self.end_position = Pose2d(x, y, 0)
 
-
         self.speed_x = speed_x
         self.speed_y = speed_y
-        self.drive = drive
         self.addRequirements([drive])
 
     def initialize(self) -> None:
@@ -26,15 +24,13 @@ class DriveDistance(commands2.CommandBase):
 
     def execute(self) -> None:
         transform = self.end_position - self.drive.odometry.getPose()
-        x_speed = self.speed_x
-        y_speed = self.speed_y
         dx = transform.X()
         dy = transform.Y()
         if abs(dx) <= 0.1:
-            x_speed = 0.0
+            self.speed_x = 0.0
         if abs(dy) <= 0.1:
-            y_speed = 0.0
-        self.drive.driveCartesian(math.copysign(y_speed, -dy), math.copysign(x_speed, dx), 0)
+            self.speed_y = 0.0
+        self.drive.driveCartesian(math.copysign(self.speed_y, -dy), math.copysign(self.speed_x, dx), 0)
 
     def end(self, interrupted: bool) -> None:
         self.drive.driveCartesian(0, 0, 0)

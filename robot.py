@@ -19,6 +19,5 @@ class Robot(commands2.TimedCommandRobot):
         self.base_pilotable.setDefaultCommand(Piloter(self.base_pilotable, self.stick, self.xbox_controller))
 
 
-
 if __name__ == "__main__":
     wpilib.run(Robot)
