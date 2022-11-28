@@ -19,7 +19,7 @@ class Robot(commands2.TimedCommandRobot):
         self.xbox_controller = wpilib.Joystick(1)
 
         self.base_pilotable.setDefaultCommand(Piloter(self.base_pilotable, self.stick, self.xbox_controller))
-        JoystickButton(self.stick, 5).whenPressed((AvancerX(self.base_pilotable, 5, 1000, 352)))
+        JoystickButton(self.stick, 5).whenPressed((AvancerX(self.base_pilotable, 1, 1000)))
         JoystickButton(self.stick, 4).whenPressed((Tourner(self.base_pilotable, -90, 1)))
 
 
