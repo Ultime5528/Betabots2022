@@ -9,7 +9,7 @@ class TirerLoin(safecommandbase):
         self.tireur = tireur
 
     def execute(self):
-        self.tireur.tirer(self.tireur_speed)
+        self.tireur.tirer(Proprietes.tirer_speed_long, Proprietes.twist_speed)
 
 
 
