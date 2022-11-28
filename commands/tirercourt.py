@@ -16,7 +16,7 @@ class TirerCourt(safecommandbase):
         self.timer.reset()
 
     def execute(self):
-        self.tireur.tirer(Proprietes.tirer_speed_court)
+        self.tireur.tirer(Proprietes.tirer_speed_court, Proprietes.twist_speed)
 
     def is_finished(self) -> bool:
         return self.timer.get() >= Proprietes.tirer_temps_court
@@ -24,4 +24,3 @@ class TirerCourt(safecommandbase):
     def end(self, interrupted: bool) -> None:
         self.tireur.stop()
         self.timer.stop()
-

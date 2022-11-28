@@ -30,11 +30,10 @@ class _Proprietes:
 
     tirer_speed_court = ntproperty("/Proprietes/Tirer/tirer_speed_court", 0.2, writeDefault=True)
     tirer_speed_long = ntproperty("/Proprietes/Tirer/tirer_speed_long", 0.5, writeDefault=True)
-    shake_speed = ntproperty("/Proprietes/Tirer/shake_speed", 1, writeDefault=True)
+    twist_speed = ntproperty("/Proprietes/Tirer/shake_speed", 1, writeDefault=True)
 
     tirer_temps_court = ntproperty("/Proprietes/Tirer/tirer_temps_court", 2, writeDefault=True)
     tirer_temps_loin = ntproperty("/Proprietes/Tirer/tirer_temps_loin", 1, writeDefault=True)
-    shake_temps = ntproperty("/Proprietes/Tirer/shake_temps", 5, writeDefault=True)
 
     ultrasound_min_distance = ntproperty("/Proprietes/Tirer/ultrasound_min_distance", 2, writeDefault=True)
 
