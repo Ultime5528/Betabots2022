@@ -144,6 +144,12 @@ class BasePilotable(commands2.SubsystemBase):
         self.rl_motor.set(value)
         self.rr_motor.set(value)
 
+    def tank_drive(self, left: float, right: float):
+        self.fl_motor.set(value)
+        self.rl_motor.set(value)
+        self.fr_motor.set(value)
+        self.rr_motor.set(value)
+
     def simulationPeriodic(self) -> None:
         self.drive_sim.update(
             self.fl_motor.get(), self.fr_motor.get(), self.rl_motor.get(), self.rr_motor.get()
@@ -186,6 +192,6 @@ class BasePilotable(commands2.SubsystemBase):
     def get_ultrasound_left(self):
         return self.ultrasound_left.get()
 
-    def get_ultrasound_left(self):
-        return self.ultrasound_left.get()
+    def get_ultrasound_right(self):
+        return self.ultrasound_right.get()
 

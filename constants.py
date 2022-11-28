@@ -35,7 +35,10 @@ class _Proprietes:
     tirer_temps_court = ntproperty("/Proprietes/Tirer/tirer_temps_court", 2, writeDefault=True)
     tirer_temps_loin = ntproperty("/Proprietes/Tirer/tirer_temps_loin", 1, writeDefault=True)
 
-    ultrasound_min_distance = ntproperty("/Proprietes/Tirer/ultrasound_min_distance", 2, writeDefault=True)
+    aligner_threshold = ntproperty("/Proprietes/Tirer/aligner_threshold", 0.5, writeDefault=True)
+    aligner_vitesse = ntproperty("/Proprietes/Tirer/aligner_vitesse", 0.1, writeDefault=True)
+    aligner_distance = ntproperty("/Proprietes/Tirer/aligner_distance", 0.1, writeDefault=True)
+
 
 
 Proprietes = _Proprietes()
