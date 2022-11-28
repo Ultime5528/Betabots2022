@@ -47,6 +47,9 @@ class BasePilotable(commands2.SubsystemBase):
 
         self.accel = wpilib.BuiltInAccelerometer()
 
+        self.ultrasound_left = wpilib.AnalogPotentiometer(Ports.shooter_ultrasound_left)
+        self.ultrasound_right = wpilib.AnalogPotentiometer(Ports.shooter_ultrasound_right)
+
         for encoder in [self.fl_encoder, self.fr_encoder, self.rl_encoder, self.rr_encoder]:
             encoder.setPositionConversionFactor(1 / self.pulses_per_meter)
             encoder.setVelocityConversionFactor(1 / (self.pulses_per_meter * 60))
@@ -176,3 +179,10 @@ class BasePilotable(commands2.SubsystemBase):
 
     def isMoving(self):
         return self.gyro.isMoving()
+
+    def get_ultrasound_left(self):
+        return self.ultrasound_left.get()
+
+    def get_ultrasound_left(self):
+        return self.ultrasound_left.get()
+
