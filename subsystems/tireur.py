@@ -9,6 +9,9 @@ class Tireur(commands2.SubsystemBase):
         self.motor_tireur = wpilib.PWMVictorSPX(Ports.port_moteur_tireur)
         self.motor_shake = wpilib.PWMVictorSPX(Ports.port_moteur_shake)
 
+        self.ultrasound_left = wpilib.AnalogPotentiometer(Ports.shooter_ultrasound_left)
+        self.ultrasound_right = wpilib.AnalogPotentiometer(Ports.shooter_ultrasound_right)
+
     def tirer(self, speed):
         self.motor_tireur.set(speed)
 
@@ -21,3 +24,8 @@ class Tireur(commands2.SubsystemBase):
     def stop_shake(self):
         self.motor_shake.stopMotor()
 
+    def get_ultrasound_left(self):
+        return self.ultrasound_left.get()
+
+    def get_ultrasound_left(self):
+        return self.ultrasound_left.get()

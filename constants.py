@@ -12,6 +12,9 @@ class Ports:
     base_pilotable_moteur_rl = 3
     base_pilotable_moteur_rr = 4
 
+    shooter_ultrasound_left = 4
+    shooter_ultrasound_right = 5
+
     # PWM
     ...
 
@@ -32,5 +35,8 @@ class _Proprietes:
     tirer_temps_court = ntproperty("/Proprietes/Tirer/tirer_temps_court", 2, writeDefault=True)
     tirer_temps_loin = ntproperty("/Proprietes/Tirer/tirer_temps_loin", 1, writeDefault=True)
     shake_temps = ntproperty("/Proprietes/Tirer/shake_temps", 5, writeDefault=True)
+
+    ultrasound_min_distance = ntproperty("/Proprietes/Tirer/ultrasound_min_distance", 2, writeDefault=True)
+
 
 Proprietes = _Proprietes()
