@@ -16,7 +16,7 @@ class TirerLoin(safecommandbase):
         self.timer.reset()
 
     def execute(self):
-        self.tireur.tirer(Proprietes.tirer_speed_long)
+        self.tireur.tirer(Proprietes.tirer_speed_long, Proprietes.twist_speed)
 
     def is_finished(self) -> bool:
         return self.timer.get() >= Proprietes.tirer_temps_loin
