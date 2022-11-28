@@ -125,3 +125,9 @@ dmypy.json
 .pyre/
 
 imgui.ini
+
+simgui-ds.json
+
+simgui-window.json
+
+simgui.json
