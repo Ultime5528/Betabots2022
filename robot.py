@@ -26,8 +26,8 @@ class Robot(commands2.TimedCommandRobot):
         JoystickButton(self.stick, 3).whenPressed((Tourner(self.base_pilotable, 90, 1)))
         JoystickButton(self.stick, 4).whenPressed((Tourner(self.base_pilotable, -90, 1)))
 
-        JoystickButton(self.stick, 1).whileHeld((TirerProche(self.tireur)))
-        JoystickButton(self.stick, 2).whileHeld((TirerLoin(self.tireur)))
+        JoystickButton(self.stick, 5).whileHeld((TirerProche(self.tireur)))
+        JoystickButton(self.stick, 6).whileHeld((TirerLoin(self.tireur)))
 
 
 

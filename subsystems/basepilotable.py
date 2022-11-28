@@ -86,6 +86,12 @@ class BasePilotable(commands2.SubsystemBase):
         self.drive.driveCartesian(ySpeed, xSpeed, zRot, 0.0)
 
     def deadzoneDriveCartesian(self, ySpeed: float, xSpeed: float, zRot: float) -> None:
+        """
+        :param ySpeed: forward
+        :param xSpeed: turn
+        :param zRot:
+        :return:
+        """
         self.drive.driveCartesian(linear_deadzone(ySpeed, Proprietes.pilotage_deadzone),
                                   linear_deadzone(xSpeed, Proprietes.pilotage_deadzone),
                                   linear_deadzone(zRot, Proprietes.pilotage_deadzone), 0.0)
