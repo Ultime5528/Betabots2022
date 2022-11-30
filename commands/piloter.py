@@ -17,18 +17,19 @@ class Piloter(SafeCommandBase):
 
     def execute(self):
         # Si bouton deux pressed, on peut faire tourner le robot. Sinon, il est en mecanum pure.
-        if self.stick.getRawButton(2):
-            # Avec rotation
-            self.base_pilotable.deadzoneDriveCartesian(
-                Proprietes.pilotage_max_y * -self.stick.getY(),
-                Proprietes.pilotage_max_x * self.stick.getX(),
-                Proprietes.pilotage_max_z * self.stick.getZ()
-            )
-        else:
-            # Sans rotation / Mecanum pure
-            self.base_pilotable.deadzoneDriveCartesian(
-                Proprietes.pilotage_max_y * -self.stick.getY(),
-                Proprietes.pilotage_max_x * self.stick.getX(),
-                0.0
-            )
+        # if self.stick.getRawButton(2):
+        #     # Avec rotation
+        #     self.base_pilotable.deadzoneDriveCartesian(
+        #         Proprietes.pilotage_max_y * -self.stick.getY(),
+        #         Proprietes.pilotage_max_x * self.stick.getX(),
+        #         Proprietes.pilotage_max_z * self.stick.getZ()
+        #     )
+        # else:
+        #     # Sans rotation / Mecanum pure
+        #     self.base_pilotable.deadzoneDriveCartesian(
+        #         Proprietes.pilotage_max_y * -self.stick.getY(),
+        #         Proprietes.pilotage_max_x * self.stick.getX(),
+        #         0.0
+        #     )
+        self.base_pilotable.driveCartesian(Proprietes.pilotage_max_x * self.stick.getX(), Proprietes.pilotage_max_y * -self.stick.getY(), Proprietes.pilotage_max_z * self.stick.getZ())
 

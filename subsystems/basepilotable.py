@@ -37,8 +37,8 @@ class BasePilotable(commands2.SubsystemBase):
             motor.restoreFactoryDefaults()
             motor.setIdleMode(rev.CANSparkMax.IdleMode.kBrake)
 
-        self.fr_motor.setInverted(True)
-        self.rr_motor.setInverted(True)
+        # self.fr_motor.setInverted(True)
+        # self.rl_motor.setInverted(True)
 
         self.fl_encoder = self.fl_motor.getEncoder()
         self.fr_encoder = self.fr_motor.getEncoder()
@@ -88,8 +88,8 @@ class BasePilotable(commands2.SubsystemBase):
     def deadzoneDriveCartesian(self, ySpeed: float, xSpeed: float, zRot: float) -> None:
         """
         :param ySpeed: forward
-        :param xSpeed: turn
-        :param zRot:
+        :param xSpeed: left right
+        :param zRot: turn
         :return:
         """
         self.drive.driveCartesian(linear_deadzone(ySpeed, Proprietes.pilotage_deadzone),
