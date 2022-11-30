@@ -1,25 +1,23 @@
 import wpilib
 import commands2
-from constants import Ports
+from constants import Ports, Proprietes
 
 
 class Tireur(commands2.SubsystemBase):
     def __init__(self):
         super().__init__()
-        self.motor_tireur = wpilib.PWMVictorSPX(Ports.port_moteur_tireur)
-        self.motor_twist = wpilib.PWMVictorSPX(Ports.port_moteur_twist)
+        self.motor_tireur = wpilib.PWMVictorSPX(Ports.tireur_moteur)
+        self.motor_twist = wpilib.PWMVictorSPX(Ports.tireur_moteur_twist)
 
-    def tirer(self, speed_tirer, speed_twist):
-        self.motor_tireur.set(speed_tirer)
-        self.motor_twist.set(speed_tirer)
+    def tirer_loin(self):
+        self.motor_tireur.set(Proprietes.tireur_speed_loin)
+        self.motor_twist.set(Proprietes.tireur_twist_speed)
+
+    def tirer_proche(self):
+        self.motor_tireur.set(Proprietes.tireur_speed_proche)
+        self.motor_twist.set(Proprietes.tireur_twist_speed)
 
     def stop(self):
         self.motor_tireur.stopMotor()
         self.motor_twist.stopMotor()
-
-    def shake(self, speed):
-        self.motor_shake.set(speed)
-
-    def stop_shake(self):
-        self.motor_shake.stopMotor()
 
