@@ -123,6 +123,9 @@ class BasePilotable(commands2.SubsystemBase):
             Rotation2d.fromDegrees(self.getAngle()),
             self.wheelSpeeds
         )
+        wpilib.SmartDashboard.putNumber("ultrasound_left", self.ultrasound_left.get())
+        wpilib.SmartDashboard.putNumber("ultrasound_right", self.ultrasound_right.get())
+
         wpilib.SmartDashboard.putNumber("fl_motor/Value", self.fl_motor.get())
         wpilib.SmartDashboard.putNumber("fl_motor/Position", self.fl_encoder.getPosition())
         wpilib.SmartDashboard.putNumber("fl_motor/Velocity", self.fl_encoder.getVelocity())
@@ -151,10 +154,10 @@ class BasePilotable(commands2.SubsystemBase):
         self.rr_motor.set(value)
 
     def tank_drive(self, left: float, right: float):
-        self.fl_motor.set(value)
-        self.rl_motor.set(value)
-        self.fr_motor.set(value)
-        self.rr_motor.set(value)
+        self.fl_motor.set(left)
+        self.rl_motor.set(left)
+        self.fr_motor.set(right)
+        self.rr_motor.set(right)
 
     def simulationPeriodic(self) -> None:
         self.drive_sim.update(

@@ -12,8 +12,8 @@ class Ports:
     base_pilotable_moteur_rl = 1
     base_pilotable_moteur_rr = 4
 
-    shooter_ultrasound_left = 4
-    shooter_ultrasound_right = 5
+    shooter_ultrasound_left = 0
+    shooter_ultrasound_right = 1
 
     # PWM
     tireur_moteur = 0
