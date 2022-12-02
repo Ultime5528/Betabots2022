@@ -8,6 +8,7 @@ from constants import Proprietes
 from subsystems.basepilotable import BasePilotable
 from utils.safecommandbase import SafeCommandBase
 
+
 class Tourner(SafeCommandBase):
     def __init__(self, base_pilotable: BasePilotable, angle, vitesse):
         super().__init__()
