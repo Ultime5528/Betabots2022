@@ -7,10 +7,13 @@ class Ports:
     """
 
     # CAN
-    base_pilotable_moteur_fl = 1
-    base_pilotable_moteur_fr = 2
-    base_pilotable_moteur_rl = 3
+    base_pilotable_moteur_fl = 2
+    base_pilotable_moteur_fr = 3
+    base_pilotable_moteur_rl = 1
     base_pilotable_moteur_rr = 4
+
+    shooter_ultrasound_left = 0
+    shooter_ultrasound_right = 1
 
     # PWM
     tireur_moteur = 0
@@ -29,6 +32,12 @@ class _Proprietes:
     tireur_twist_speed = ntproperty("/Proprietes/Tireur/Twist_speed", 1, writeDefault=True)
     tireur_speed_proche = ntproperty("/Proprietes/Tireur/Speed_proche", -0.2, writeDefault=True)
     tireur_speed_loin = ntproperty("/Proprietes/Tireur/Speed_loin", -0.5, writeDefault=True)
+
+
+    aligner_threshold = ntproperty("/Proprietes/Tirer/aligner_threshold", 0.5, writeDefault=True)
+    aligner_vitesse = ntproperty("/Proprietes/Tirer/aligner_vitesse", 0.1, writeDefault=True)
+    aligner_distance = ntproperty("/Proprietes/Tirer/aligner_distance", 0.1, writeDefault=True)
+
 
 
 Proprietes = _Proprietes()

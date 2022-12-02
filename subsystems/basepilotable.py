@@ -37,8 +37,8 @@ class BasePilotable(commands2.SubsystemBase):
             motor.restoreFactoryDefaults()
             motor.setIdleMode(rev.CANSparkMax.IdleMode.kBrake)
 
-        self.fr_motor.setInverted(True)
-        self.rr_motor.setInverted(True)
+        # self.fr_motor.setInverted(True)
+        # self.rl_motor.setInverted(True)
 
         self.fl_encoder = self.fl_motor.getEncoder()
         self.fr_encoder = self.fr_motor.getEncoder()
@@ -46,6 +46,9 @@ class BasePilotable(commands2.SubsystemBase):
         self.rr_encoder = self.rr_motor.getEncoder()
 
         self.accel = wpilib.BuiltInAccelerometer()
+
+        self.ultrasound_left = wpilib.AnalogPotentiometer(Ports.shooter_ultrasound_left)
+        self.ultrasound_right = wpilib.AnalogPotentiometer(Ports.shooter_ultrasound_right)
 
         for encoder in [self.fl_encoder, self.fr_encoder, self.rl_encoder, self.rr_encoder]:
             encoder.setPositionConversionFactor(1 / self.pulses_per_meter)
@@ -88,8 +91,8 @@ class BasePilotable(commands2.SubsystemBase):
     def deadzoneDriveCartesian(self, ySpeed: float, xSpeed: float, zRot: float) -> None:
         """
         :param ySpeed: forward
-        :param xSpeed: turn
-        :param zRot:
+        :param xSpeed: left right
+        :param zRot: turn
         :return:
         """
         self.drive.driveCartesian(linear_deadzone(ySpeed, Proprietes.pilotage_deadzone),
@@ -120,6 +123,9 @@ class BasePilotable(commands2.SubsystemBase):
             Rotation2d.fromDegrees(self.getAngle()),
             self.wheelSpeeds
         )
+        wpilib.SmartDashboard.putNumber("ultrasound_left", self.ultrasound_left.get())
+        wpilib.SmartDashboard.putNumber("ultrasound_right", self.ultrasound_right.get())
+
         wpilib.SmartDashboard.putNumber("fl_motor/Value", self.fl_motor.get())
         wpilib.SmartDashboard.putNumber("fl_motor/Position", self.fl_encoder.getPosition())
         wpilib.SmartDashboard.putNumber("fl_motor/Velocity", self.fl_encoder.getVelocity())
@@ -146,6 +152,12 @@ class BasePilotable(commands2.SubsystemBase):
         self.fr_motor.set(value)
         self.rl_motor.set(value)
         self.rr_motor.set(value)
+
+    def tank_drive(self, left: float, right: float):
+        self.fl_motor.set(left)
+        self.rl_motor.set(left)
+        self.fr_motor.set(right)
+        self.rr_motor.set(right)
 
     def simulationPeriodic(self) -> None:
         self.drive_sim.update(
@@ -185,3 +197,10 @@ class BasePilotable(commands2.SubsystemBase):
 
     def isMoving(self):
         return self.gyro.isMoving()
+
+    def get_ultrasound_left(self):
+        return self.ultrasound_left.get()
+
+    def get_ultrasound_right(self):
+        return self.ultrasound_right.get()
+
