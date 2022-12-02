@@ -13,11 +13,12 @@ from subsystems.basepilotable import BasePilotable
 from subsystems.tireur import Tireur
 
 from commands2.button import JoystickButton
-
+import os
 
 class Robot(commands2.TimedCommandRobot):
     def robotInit(self):
-        # wpilib.CameraServer.launch('vision.py:main')
+        wpilib.CameraServer.launch('vision/vision.py:run')
+
         self.base_pilotable = BasePilotable()
         self.tireur = Tireur()
 
@@ -31,7 +32,6 @@ class Robot(commands2.TimedCommandRobot):
         JoystickButton(self.stick, 5).whileHeld((TirerProche(self.tireur)))
         JoystickButton(self.stick, 6).whileHeld((TirerLoin(self.tireur)))
         wpilib.SmartDashboard.putData("Commandes/AlignerUltrason", AlignerUltrason(self.base_pilotable))
-
 
 if __name__ == "__main__":
     wpilib.run(Robot)
