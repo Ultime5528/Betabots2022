@@ -15,9 +15,10 @@ from subsystems.tireur import Tireur
 from commands2.button import JoystickButton
 import os
 
+
 class Robot(commands2.TimedCommandRobot):
     def robotInit(self):
-        wpilib.CameraServer.launch('vision/vision.py:run')
+        wpilib.CameraServer.launch('vision/vision.py:main')
 
         self.base_pilotable = BasePilotable()
         self.tireur = Tireur()

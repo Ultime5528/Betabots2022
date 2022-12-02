@@ -29,7 +29,7 @@ class _Proprietes:
     pilotage_max_z = ntproperty("/Proprietes/PilotageMaxZ", 0.2, writeDefault=False)
     pilotage_deadzone = ntproperty("/Proprietes/PilotageDeadzone", 0.05, writeDefault=False)
 
-    tireur_twist_speed = ntproperty("/Proprietes/Tireur/Twist_speed", 1, writeDefault=True)
+    tireur_twist_speed = ntproperty("/Proprietes/Tireur/Twist_speed", -1, writeDefault=True)
     tireur_speed_proche = ntproperty("/Proprietes/Tireur/Speed_proche", -0.2, writeDefault=True)
     tireur_speed_loin = ntproperty("/Proprietes/Tireur/Speed_loin", -0.5, writeDefault=True)
 
