@@ -8,7 +8,7 @@ import commands2
 
 class Auto4Cubes(commands2.SequentialCommandGroup):
     def __init__(self, base_pilotable: BasePilotable, tireur: Tireur):
-        self.setName(Auto4Cubes)
+        self.setName("Auto4Cubes")
         super().__init__(
             commands2.SequentialCommandGroup(
                 commands2.WaitCommand(0.5),
