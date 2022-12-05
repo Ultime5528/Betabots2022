@@ -28,17 +28,17 @@ class Robot(commands2.TimedCommandRobot):
         self.xbox_controller = wpilib.Joystick(1)
 
         self.base_pilotable.setDefaultCommand(Piloter(self.base_pilotable, self.stick, self.xbox_controller))
-        JoystickButton(self.stick, 1).whenPressed(TournerX(self.base_pilotable, 90, 1))
-        JoystickButton(self.stick, 2).whenPressed(TournerX(self.base_pilotable, -90, 1))
+        JoystickButton(self.stick, 11).whenPressed(TournerX(self.base_pilotable, 90, 0.5))
+        JoystickButton(self.stick, 12).whenPressed(TournerX(self.base_pilotable, -90, 0.5))
 
-        JoystickButton(self.stick, 2).whenPressed((Auto4Cubes(self.base_pilotable, self.tireur)))
+        # JoystickButton(self.stick, 2).whenPressed((Auto4Cubes(self.base_pilotable, self.tireur)))
 
-        JoystickButton(self.stick, 5).whileHeld((TirerProche(self.tireur)))
-        JoystickButton(self.stick, 6).whileHeld((TirerLoin(self.tireur)))
+        # JoystickButton(self.stick, 5).whileHeld((TirerProche(self.tireur)))
+        # JoystickButton(self.stick, 6).whileHeld((TirerLoin(self.tireur)))
         wpilib.SmartDashboard.putData("Commandes/AlignerUltrason", AlignerUltrason(self.base_pilotable))
         wpilib.SmartDashboard.putData("Commandes/Tourner", AlignerUltrason(self.base_pilotable))
 
-        wpilib.SmartDashboard.putData("Commandes/TournerX", TournerX(self.base_pilotable, 90, 1))
+        wpilib.SmartDashboard.putData("Commandes/TournerX", TournerX(self.base_pilotable, 90, 0.1))
 
 
 if __name__ == "__main__":

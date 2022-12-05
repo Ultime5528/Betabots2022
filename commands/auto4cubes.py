@@ -1,7 +1,7 @@
 from subsystems.basepilotable import BasePilotable
 from subsystems.tireur import Tireur
 from commands.avancerx import AvancerX
-from commands.tourner import Tourner
+from commands.tournerX import TournerX
 from commands.tirerproche import TirerProche
 import commands2
 
@@ -19,9 +19,9 @@ class Auto4Cubes(commands2.SequentialCommandGroup):
                 AvancerX(base_pilotable, -46, 0, -0.5),
                 AvancerX(base_pilotable, 0, 66, 0.5),
                 AvancerX(base_pilotable, 60, 0, 0.5),
-                Tourner(base_pilotable, 90, 0.5),
+                TournerX(base_pilotable, 90, 0.5),
                 AvancerX(base_pilotable, 130, 0, 0.5),
-                Tourner(base_pilotable, 90, 0.5),
+                TournerX(base_pilotable, 90, 0.5),
                 AvancerX(base_pilotable, 60, 0, 0.5),
 
                 # placer les cubes:
