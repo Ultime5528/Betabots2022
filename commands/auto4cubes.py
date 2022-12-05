@@ -1,7 +1,8 @@
 from subsystems.basepilotable import BasePilotable
 from subsystems.tireur import Tireur
 from commands.avancerx import AvancerX
-from commands.tournerx import TournerX
+from commands.tournerX import TournerX
+from commands.tournerX import TournerX
 from commands.tirerproche import TirerProche
 import commands2
 

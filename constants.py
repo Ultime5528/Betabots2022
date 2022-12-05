@@ -24,6 +24,8 @@ class Ports:
 
 
 class _Proprietes:
+    pilotage_turn_tolerance = ntproperty("/Proprietes/pilotage_turn_tolerance", 2, writeDefault=False)
+
     pilotage_max_x = ntproperty("/Proprietes/PilotageMaxX", 0.4, writeDefault=False)
     pilotage_max_y = ntproperty("/Proprietes/PilotageMaxY", 0.4, writeDefault=False)
     pilotage_max_z = ntproperty("/Proprietes/PilotageMaxZ", 0.2, writeDefault=False)
@@ -33,7 +35,7 @@ class _Proprietes:
     tireur_speed_proche = ntproperty("/Proprietes/Tireur/Speed_proche", -0.2, writeDefault=True)
     tireur_speed_loin = ntproperty("/Proprietes/Tireur/Speed_loin", -0.5, writeDefault=True)
 
-    aligner_constante = ntproperty("/Proprietes/Tirer/aligner_constante", 0.25, writeDefault=True)
+    aligner_constante = ntproperty("/Proprietes/Tirer/aligner_constante", 0.1, writeDefault=True)
     aligner_threshold = ntproperty("/Proprietes/Tirer/aligner_threshold", 0.5, writeDefault=True)
     aligner_vitesse = ntproperty("/Proprietes/Tirer/aligner_vitesse", 0.1, writeDefault=True)
     aligner_distance = ntproperty("/Proprietes/Tirer/aligner_distance", 0.1, writeDefault=True)
