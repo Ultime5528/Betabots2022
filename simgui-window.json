@@ -1,11 +1,11 @@
 {
   "MainWindow": {
     "GLOBAL": {
-      "height": "986",
+      "height": "705",
       "maximized": "1",
       "style": "1",
       "userScale": "2",
-      "width": "1920",
+      "width": "1366",
       "xpos": "0",
       "ypos": "34"
     }
@@ -19,7 +19,7 @@
     "###/SmartDashboard/Commandes/AlignerUltrason": {
       "Collapsed": "0",
       "Pos": "60,60",
-      "Size": "154,89"
+      "Size": "110,71"
     },
     "###/SmartDashboard/Field": {
       "Collapsed": "0",
@@ -28,13 +28,13 @@
     },
     "###FMS": {
       "Collapsed": "0",
-      "Pos": "7,810",
-      "Size": "388,182"
+      "Pos": "7,686",
+      "Size": "283,146"
     },
     "###Joysticks": {
       "Collapsed": "0",
-      "Pos": "375,697",
-      "Size": "1156,202"
+      "Pos": "375,686",
+      "Size": "796,155"
     },
     "###NetworkTables": {
       "Collapsed": "0",
@@ -43,7 +43,7 @@
     },
     "###Other Devices": {
       "Collapsed": "0",
-      "Pos": "1537,30",
+      "Pos": "1347,30",
       "Size": "375,1042"
     },
     "###RoboRIO": {
@@ -54,12 +54,12 @@
     "###System Joysticks": {
       "Collapsed": "0",
       "Pos": "7,525",
-      "Size": "273,290"
+      "Size": "192,218"
     },
     "###Timing": {
       "Collapsed": "0",
       "Pos": "7,225",
-      "Size": "188,215"
+      "Size": "135,150"
     },
     "Debug##Default": {
       "Collapsed": "0",
@@ -69,7 +69,7 @@
     "Robot State": {
       "Collapsed": "0",
       "Pos": "5,20",
-      "Size": "126,129"
+      "Size": "92,99"
     }
   }
 }
