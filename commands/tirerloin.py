@@ -4,6 +4,7 @@ from subsystems.tireur import Tireur
 
 class TirerLoin(SafeCommandBase):
     def __init__(self, tireur: Tireur):
+        self.setname("TirerLoin")
         super().__init__()
         self.tireur = tireur
         self.addRequirements(tireur)

@@ -16,22 +16,22 @@ class Auto4Cubes(commands2.SequentialCommandGroup):
                 # tourner: angle, vitesse
 
                 # aller chercher les cubes:
-                AvancerX(base_pilotable, -0.46, 0, -0.5),
-                AvancerX(base_pilotable, 0, 0.66, 0.5),
-                AvancerX(base_pilotable, 0.60, 0, 0.5),
-                TournerX(base_pilotable, 90, 0.5),
-                AvancerX(base_pilotable, 1.30, 0, 0.5),
-                TournerX(base_pilotable, 90, 0.5),
-                AvancerX(base_pilotable, 0.60, 0, 0.5),
+                AvancerX(base_pilotable, -0.46, 0, -0.15),
+                AvancerX(base_pilotable, 0, 0.66, 0.15),
+                AvancerX(base_pilotable, 0.60, 0, 0.15),
+                TournerX(base_pilotable, 90, 0.15),
+                AvancerX(base_pilotable, 1.30, 0, 0.15),
+                TournerX(base_pilotable, 90, 0.15),
+                AvancerX(base_pilotable, 0.60, 0, 0.15),
 
                 # placer les cubes:
-                AvancerX(base_pilotable, 2.65, 0.30, 0.5),
+                AvancerX(base_pilotable, 2.65, 0.30, 0.15),
                 TirerProche(tireur),
-                AvancerX(base_pilotable, 0, 0.15, 0.5),
+                AvancerX(base_pilotable, 0, 0.15, 0.15),
                 TirerProche(tireur),
-                AvancerX(base_pilotable, 0, 0.15, 0.5),
+                AvancerX(base_pilotable, 0, 0.15, 0.15),
                 TirerProche(tireur),
-                AvancerX(base_pilotable, 0, 0.15, 0.5),
+                AvancerX(base_pilotable, 0, 0.15, 0.15),
                 TirerProche(tireur),
             ),
         )

@@ -5,6 +5,7 @@ from constants import Ports, Proprietes
 
 class Tireur(commands2.SubsystemBase):
     def __init__(self):
+        self.setname("Tireur")
         super().__init__()
         self.motor_tireur = wpilib.PWMVictorSPX(Ports.tireur_moteur)
         self.motor_twist = wpilib.PWMVictorSPX(Ports.tireur_moteur_twist)

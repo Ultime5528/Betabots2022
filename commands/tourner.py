@@ -11,6 +11,7 @@ from utils.safecommandbase import SafeCommandBase
 
 class Tourner(SafeCommandBase):
     def __init__(self, base_pilotable: BasePilotable, angle, vitesse):
+        self.setname("TournerX")
         super().__init__()
         self.base_pilotable = base_pilotable
         self.angle = angle

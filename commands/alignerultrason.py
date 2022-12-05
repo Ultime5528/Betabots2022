@@ -7,6 +7,7 @@ import constants
 
 class AlignerUltrason(safecommandbase.SafeCommandBase):
     def __init__(self, basepilotable: BasePilotable):
+        self.setName("AlignerUltrason")
         super().__init__()
         self.basepilotable = basepilotable
 

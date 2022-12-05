@@ -8,6 +8,7 @@ from utils.safecommandbase import SafeCommandBase
 
 class Piloter(SafeCommandBase):
     def __init__(self, base_pilotable: BasePilotable, stick: wpilib.Joystick, xbox_controller: wpilib.Joystick):
+        self.setname("Piloter")
         super().__init__()
 
         self.stick = stick
