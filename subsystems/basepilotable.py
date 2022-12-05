@@ -20,7 +20,7 @@ from utils.deadzone import linear_deadzone
 class BasePilotable(commands2.SubsystemBase):
     # TBD
     pulses_per_meter = 16.68
-    use_navx = True
+    use_navx = False
 
     def __init__(self) -> None:
         super().__init__()
@@ -47,6 +47,9 @@ class BasePilotable(commands2.SubsystemBase):
 
         self.accel = wpilib.BuiltInAccelerometer()
 
+        self.ultrasound_left = wpilib.AnalogPotentiometer(Ports.shooter_ultrasound_left)
+        self.ultrasound_right = wpilib.AnalogPotentiometer(Ports.shooter_ultrasound_right)
+
         for encoder in [self.fl_encoder, self.fr_encoder, self.rl_encoder, self.rr_encoder]:
             encoder.setPositionConversionFactor(1 / self.pulses_per_meter)
             encoder.setVelocityConversionFactor(1 / (self.pulses_per_meter * 60))
@@ -55,8 +58,10 @@ class BasePilotable(commands2.SubsystemBase):
             self.gyro = navx.AHRS(wpilib.SerialPort.Port.kMXP)
             self.gyro.reset()
             self.gyro.calibrate()
-        # else:
-        #     self.gyro = wpilib.ADXRS450_Gyro()
+        else:
+            self.gyro = wpilib.ADXRS450_Gyro()
+            self.gyro.reset()
+            self.gyro.calibrate()
 
         self.drive = wpilib.drive.MecanumDrive(self.fl_motor, self.rl_motor, self.fr_motor, self.rr_motor)
 
@@ -69,10 +74,11 @@ class BasePilotable(commands2.SubsystemBase):
         self.wheelSpeeds = MecanumDriveWheelSpeeds()
         self.odometry = MecanumDriveOdometry(self.kinematics, Rotation2d.fromDegrees(0.0))
 
+        self.field = wpilib.Field2d()
+        wpilib.SmartDashboard.putData("Field", self.field)
+
         if RobotBase.isSimulation():
             from utils.mecanumdrivesim import MecanumDriveSim
-            self.field = wpilib.Field2d()
-            wpilib.SmartDashboard.putData("Field", self.field)
             self.drive_sim = MecanumDriveSim(self.kinematics)
             self.fl_motor_sim = SparkMaxSim(self.fl_motor)
             self.fr_motor_sim = SparkMaxSim(self.fr_motor)
@@ -112,14 +118,17 @@ class BasePilotable(commands2.SubsystemBase):
 
     def periodic(self) -> None:
         self.wheelSpeeds.frontLeft = self.fl_encoder.getVelocity()
-        self.wheelSpeeds.frontRight = self.fr_encoder.getVelocity()
+        self.wheelSpeeds.frontRight = -self.fr_encoder.getVelocity()
         self.wheelSpeeds.rearLeft = self.rl_encoder.getVelocity()
-        self.wheelSpeeds.rearRight = self.rr_encoder.getVelocity()
+        self.wheelSpeeds.rearRight = -self.rr_encoder.getVelocity()
 
         self.odometry.update(
             Rotation2d.fromDegrees(self.getAngle()),
             self.wheelSpeeds
         )
+        wpilib.SmartDashboard.putNumber("ultrasound_left", self.ultrasound_left.get())
+        wpilib.SmartDashboard.putNumber("ultrasound_right", self.ultrasound_right.get())
+
         wpilib.SmartDashboard.putNumber("fl_motor/Value", self.fl_motor.get())
         wpilib.SmartDashboard.putNumber("fl_motor/Position", self.fl_encoder.getPosition())
         wpilib.SmartDashboard.putNumber("fl_motor/Velocity", self.fl_encoder.getVelocity())
@@ -139,13 +148,24 @@ class BasePilotable(commands2.SubsystemBase):
         wpilib.SmartDashboard.putNumber("accelX", self.getAccelX())
         wpilib.SmartDashboard.putNumber("accelY", self.getAccelY())
         wpilib.SmartDashboard.putNumber("accelZ", self.getAccelZ())
+        wpilib.SmartDashboard.putNumber("gyro", self.gyro.getAngle())
+        wpilib.SmartDashboard.putNumber("angle", self.getAngle())
         wpilib.SmartDashboard.putBoolean("isMoving", self.isMoving())
+
+        if not RobotBase.isSimulation():
+            self.field.setRobotPose(self.odometry.getPose())
 
     def drive_test(self, value: float):
         self.fl_motor.set(value)
         self.fr_motor.set(value)
         self.rl_motor.set(value)
         self.rr_motor.set(value)
+
+    def tank_drive(self, left: float, right: float):
+        self.fl_motor.set(left)
+        self.rl_motor.set(left)
+        self.fr_motor.set(right)
+        self.rr_motor.set(right)
 
     def simulationPeriodic(self) -> None:
         self.drive_sim.update(
@@ -181,7 +201,20 @@ class BasePilotable(commands2.SubsystemBase):
         return self.accel.getY()
 
     def getAccelZ(self):
-        return self.gyro.getWorldLinearAccelZ()
+        if self.use_navx:
+            return self.gyro.getWorldLinearAccelZ()
+        else:
+            return self.accel.getZ()
 
     def isMoving(self):
-        return self.gyro.isMoving()
+        if self.use_navx:
+            return self.gyro.isMoving()
+        else:
+            return False
+
+    def get_ultrasound_left(self):
+        return self.ultrasound_left.get()
+
+    def get_ultrasound_right(self):
+        return self.ultrasound_right.get()
+
