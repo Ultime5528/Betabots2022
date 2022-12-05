@@ -3,8 +3,9 @@ import math
 from subsystems.basepilotable import BasePilotable
 from utils.safecommandbase import SafeCommandBase
 
+
 class AvancerX(SafeCommandBase):
-    def __init__(self, base_pilotable: BasePilotable, distanceX, distanceY, vitesse:
+    def __init__(self, base_pilotable: BasePilotable, distanceX, distanceY, vitesse):
         super().__init__()
 
         self.base_pilotable = base_pilotable
@@ -18,18 +19,23 @@ class AvancerX(SafeCommandBase):
 
     def initialize(self):
         self.base_pilotable.resetOdometry()
+        self.erreurX = math.inf
+        self.erreurY = math.inf
+        print(self.base_pilotable.odometry.getPose().X(), self.base_pilotable.odometry.getPose().Y())
 
     def execute(self):
         self.erreurX = abs(self.distanceX - self.base_pilotable.odometry.getPose().X())
         self.erreurY = abs(self.distanceY + self.base_pilotable.odometry.getPose().Y())
-        self.base_pilotable.driveCartesian(self.vitesseX, self.vitesseY, 0)
-        print(self.erreurY)
+
+        vx = self.vitesseX
+        vy = self.vitesseY
+
         if self.erreurX <= self.erreur_max:
-            print("x")
-            self.vitesseX = 0
+            vx = 0
         if self.erreurY <= self.erreur_max:
-            print("y")
-            self.vitesseY = 0
+            vy = 0
+
+        self.base_pilotable.driveCartesian(vx, vy, 0)
 
     def end(self, interrupted: bool):
         self.base_pilotable.driveCartesian(0, 0, 0)
