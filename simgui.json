@@ -18,7 +18,10 @@
       "/LiveWindow/Ungrouped/navX-Sensor[1]": "Gyro",
       "/SmartDashboard/Commandes/AlignerUltrason": "Command",
       "/SmartDashboard/Commandes/Tourner": "Command",
+<<<<<<< HEAD
       "/SmartDashboard/Commandes/TournerX": "Command",
+=======
+>>>>>>> Autonome
       "/SmartDashboard/Field": "Field2d"
     },
     "windows": {

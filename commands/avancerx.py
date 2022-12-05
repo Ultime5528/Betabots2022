@@ -12,11 +12,13 @@ class AvancerX(SafeCommandBase):
         self.base_pilotable = base_pilotable
         self.distanceX = distanceX
         self.distanceY = distanceY
-        self.vitesseX = math.copysign(vitesse, distanceX)
-        self.vitesseY = math.copysign(vitesse, distanceY)
+        self.vitesseX = vitesseX
+        self.vitesseY = vitesseY
         self.erreurX = math.inf
         self.erreurY = math.inf
-        self.erreur_max = 0.05
+        self.erreur_max = 0.1
+
+        self.addRequirements(base_pilotable)
 
     def initialize(self):
         self.base_pilotable.resetOdometry()
@@ -25,21 +27,21 @@ class AvancerX(SafeCommandBase):
         print(self.base_pilotable.odometry.getPose().X(), self.base_pilotable.odometry.getPose().Y())
 
     def execute(self):
-        self.erreurX = abs(self.distanceX - self.base_pilotable.odometry.getPose().X())
-        self.erreurY = abs(self.distanceY + self.base_pilotable.odometry.getPose().Y())
+        self.erreurX = self.distanceX - self.base_pilotable.odometry.getPose().X()
+        self.erreurY = self.distanceY - self.base_pilotable.odometry.getPose().Y()
 
-        vx = self.vitesseX
-        vy = self.vitesseY
+        self.vx = math.copysign(self.vitesseX, self.erreurX)
+        self.vy = -math.copysign(self.vitesseY, self.erreurY)
 
-        if self.erreurX <= self.erreur_max:
-            vx = 0
-        if self.erreurY <= self.erreur_max:
-            vy = 0
+        if abs(self.erreurX) <= self.erreur_max:
+            self.vx = 0
+        if abs(self.erreurY) <= self.erreur_max:
+            self.vy = 0
 
-        self.base_pilotable.driveCartesian(vx, vy, 0)
+        self.base_pilotable.driveCartesian(self.vy, self.vx, 0)
 
     def end(self, interrupted: bool):
         self.base_pilotable.driveCartesian(0, 0, 0)
 
     def isFinished(self) -> bool:
-        return self.erreurX <= self.erreur_max and self.erreurY <= self.erreur_max
+        return self.vx == 0 and self.vy == 0
