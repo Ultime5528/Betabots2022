@@ -29,7 +29,7 @@ class Robot(commands2.TimedCommandRobot):
         self.base_pilotable.setDefaultCommand(Piloter(self.base_pilotable, self.stick, self.xbox_controller))
         # JoystickButton(self.stick, 3).whenPressed((Tourner(self.base_pilotable, 90, 1)))
         # JoystickButton(self.stick, 4).whenPressed((Tourner(self.base_pilotable, -90, 1)))
-
+        JoystickButton(self.stick, 4).whenPressed((AvancerX(self.base_pilotable, 6, -3, 1)))
         JoystickButton(self.stick, 5).whileHeld((TirerProche(self.tireur)))
         JoystickButton(self.stick, 6).whileHeld((TirerLoin(self.tireur)))
         wpilib.SmartDashboard.putData("Commandes/AlignerUltrason", AlignerUltrason(self.base_pilotable))
