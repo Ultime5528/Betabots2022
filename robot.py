@@ -34,7 +34,7 @@ class Robot(commands2.TimedCommandRobot):
         # JoystickButton(self.stick, 2).whenPressed((Auto4Cubes(self.base_pilotable, self.tireur)))
 
         # JoystickButton(self.stick, 5).whileHeld((TirerProche(self.tireur)))
-        # JoystickButton(self.stick, 6).whileHeld((TirerLoin(self.tireur)))
+        JoystickButton(self.stick, 1).whenPressed((TirerLoin(self.tireur, False)))
         wpilib.SmartDashboard.putData("Commandes/AlignerUltrason", AlignerUltrason(self.base_pilotable))
         wpilib.SmartDashboard.putData("Commandes/Tourner", AlignerUltrason(self.base_pilotable))
 

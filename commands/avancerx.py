@@ -6,7 +6,7 @@ from utils.safecommandbase import SafeCommandBase
 
 class AvancerX(SafeCommandBase):
     def __init__(self, base_pilotable: BasePilotable, distanceX, distanceY, vitesse):
-        self.setname("AvancerX")
+        self.setName("AvancerX")
         super().__init__()
 
         self.base_pilotable = base_pilotable

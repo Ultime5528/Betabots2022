@@ -6,7 +6,7 @@ from constants import *
 
 class TirerProche(SafeCommandBase):
     def __init__(self, tireur: Tireur):
-        self.setname("TirerProche")
+        self.setName("TirerProche")
         super().__init__()
         self.tireur = tireur
         self.addRequirements(tireur)
