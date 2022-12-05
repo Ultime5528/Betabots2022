@@ -1,34 +1,18 @@
 {
-  "HALProvider": {
-    "Other Devices": {
-      "BuiltInAccel": {
-        "header": {
-          "open": true
-        }
-      },
-      "SPARK MAX [4]": {
-        "header": {
-          "open": true
-        }
-      },
-      "navX-Sensor[1]": {
-        "header": {
-          "open": true
-        }
-      }
-    }
-  },
   "NTProvider": {
     "types": {
       "/FMSInfo": "FMSInfo",
       "/LiveWindow/Ungrouped/MecanumDrive[1]": "MecanumDrive",
+      "/LiveWindow/Ungrouped/PWMVictorSPX[0]": "Motor Controller",
+      "/LiveWindow/Ungrouped/PWMVictorSPX[1]": "Motor Controller",
       "/LiveWindow/Ungrouped/Scheduler": "Scheduler",
       "/LiveWindow/Ungrouped/class frc2::SubsystemBase": "Subsystem",
       "/LiveWindow/Ungrouped/navX-Sensor[1]": "Gyro",
+      "/SmartDashboard/Commandes/AlignerUltrason": "Command",
       "/SmartDashboard/Field": "Field2d"
     },
     "windows": {
-      "/LiveWindow/Ungrouped/navX-Sensor[1]": {
+      "/SmartDashboard/Commandes/AlignerUltrason": {
         "window": {
           "visible": true
         }

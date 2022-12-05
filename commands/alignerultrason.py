@@ -16,7 +16,7 @@ class AlignerUltrason(safecommandbase.SafeCommandBase):
         right_speed = 0.5
 
         if abs(error) > constants.Proprietes.aligner_threshold:
-            correction = K * error
+            correction = constants.Proprietes.aligner_constante * error
             left_speed += correction
             right_speed -= correction
 

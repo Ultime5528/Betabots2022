@@ -39,8 +39,8 @@ def main():
         #
         # Insert your image processing logic here!
         #
-        cv2.line(img, [constants.Proprietes.vision_ligne_gauche], [constants.Proprietes.vision_ligne_droit], (0, 255, 0), 2)
-        cv2.line(img, [constants.Proprietes.vision_ligne_gauche, 0], [constants.Proprietes.vision_ligne_droite], (0, 255, 0), 2)
+        cv2.line(img, (constants.Proprietes.vision_ligne_gauche, 0), (constants.Proprietes.vision_ligne_gauche, 100), (0,255,0), 2)
+        cv2.line(img, (constants.Proprietes.vision_ligne_droite, 0), (constants.Proprietes.vision_ligne_droite, 100), (0, 255, 0), 2)
 
         # (optional) send some image back to the dashboard
         outputStream.putFrame(img)
