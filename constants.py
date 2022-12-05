@@ -29,14 +29,17 @@ class _Proprietes:
     pilotage_max_z = ntproperty("/Proprietes/PilotageMaxZ", 0.2, writeDefault=False)
     pilotage_deadzone = ntproperty("/Proprietes/PilotageDeadzone", 0.05, writeDefault=False)
 
-    tireur_twist_speed = ntproperty("/Proprietes/Tireur/Twist_speed", 1, writeDefault=True)
+    tireur_twist_speed = ntproperty("/Proprietes/Tireur/Twist_speed", -1, writeDefault=True)
     tireur_speed_proche = ntproperty("/Proprietes/Tireur/Speed_proche", -0.2, writeDefault=True)
     tireur_speed_loin = ntproperty("/Proprietes/Tireur/Speed_loin", -0.5, writeDefault=True)
 
-
+    aligner_constante = ntproperty("/Proprietes/Tirer/aligner_constante", 0.25, writeDefault=True)
     aligner_threshold = ntproperty("/Proprietes/Tirer/aligner_threshold", 0.5, writeDefault=True)
     aligner_vitesse = ntproperty("/Proprietes/Tirer/aligner_vitesse", 0.1, writeDefault=True)
     aligner_distance = ntproperty("/Proprietes/Tirer/aligner_distance", 0.1, writeDefault=True)
+
+    vision_ligne_gauche = ntproperty("/Proprietes/Vision/vision_ligne_gauche", 20, writeDefault=True)
+    vision_ligne_droite = ntproperty("/Proprietes/Vision/vision_ligne_droite", 100, writeDefault=True)
 
 
 
