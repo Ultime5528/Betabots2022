@@ -24,6 +24,8 @@ class Ports:
 
 
 class _Proprietes:
+    pilotage_turn_tolerance = ntproperty("/Proprietes/pilotage_turn_tolerance", 2, writeDefault=False)
+
     pilotage_max_x = ntproperty("/Proprietes/PilotageMaxX", 0.4, writeDefault=False)
     pilotage_max_y = ntproperty("/Proprietes/PilotageMaxY", 0.4, writeDefault=False)
     pilotage_max_z = ntproperty("/Proprietes/PilotageMaxZ", 0.2, writeDefault=False)

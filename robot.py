@@ -6,7 +6,7 @@ import wpilib
 from commands.auto4cubes import Auto4Cubes
 from commands.avancerx import AvancerX
 from commands.piloter import Piloter
-from commands.tourner import Tourner
+from commands.tournerX import TournerX
 from commands.tirerloin import TirerLoin
 from commands.tirerproche import TirerProche
 from commands.alignerultrason import AlignerUltrason
@@ -28,8 +28,8 @@ class Robot(commands2.TimedCommandRobot):
         self.xbox_controller = wpilib.Joystick(1)
 
         self.base_pilotable.setDefaultCommand(Piloter(self.base_pilotable, self.stick, self.xbox_controller))
-        # JoystickButton(self.stick, 3).whenPressed((Tourner(self.base_pilotable, 90, 1)))
-        # JoystickButton(self.stick, 4).whenPressed((Tourner(self.base_pilotable, -90, 1)))
+        JoystickButton(self.stick, 1).whenPressed(TournerX(self.base_pilotable, 90, 1))
+        JoystickButton(self.stick, 2).whenPressed(TournerX(self.base_pilotable, -90, 1))
 
         JoystickButton(self.stick, 2).whenPressed((Auto4Cubes(self.base_pilotable, self.tireur)))
 
@@ -37,6 +37,9 @@ class Robot(commands2.TimedCommandRobot):
         JoystickButton(self.stick, 6).whileHeld((TirerLoin(self.tireur)))
         wpilib.SmartDashboard.putData("Commandes/AlignerUltrason", AlignerUltrason(self.base_pilotable))
         wpilib.SmartDashboard.putData("Commandes/Tourner", AlignerUltrason(self.base_pilotable))
+
+        wpilib.SmartDashboard.putData("Commandes/TournerX", TournerX(self.base_pilotable, 90, 1))
+
 
 if __name__ == "__main__":
     wpilib.run(Robot)
