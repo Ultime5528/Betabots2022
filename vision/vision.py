@@ -8,6 +8,8 @@ from networktables import NetworkTables
 
 import constants
 
+screen_height = 480
+
 
 def main():
     NetworkTables.initialize(server="10.55.28.2")
@@ -21,10 +23,10 @@ def main():
     cv_sink = cs.getVideo()
 
     # (optional) Setup a CvSource. This will send images back to the Dashboard
-    outputStream = cs.putVideo("Camera", 320, 240)
+    outputStream = cs.putVideo("Camera", 640, screen_height)
 
     # Allocating new images is very expensive, always try to preallocate
-    img = np.zeros(shape=(320, 240, 3), dtype=np.uint8)
+    img = np.zeros(shape=(640, screen_height, 3), dtype=np.uint8)
 
     while True:
         # Tell the CvSink to grab a frame from the camera and put it
@@ -39,8 +41,8 @@ def main():
         #
         # Insert your image processing logic here!
         #
-        cv2.line(img, (constants.Proprietes.vision_ligne_gauche, 0), (constants.Proprietes.vision_ligne_gauche, 100), (0,255,0), 2)
-        cv2.line(img, (constants.Proprietes.vision_ligne_droite, 0), (constants.Proprietes.vision_ligne_droite, 100), (0, 255, 0), 2)
+        cv2.line(img, (int(constants.Proprietes.vision_ligne_gauche), 0), (int(constants.Proprietes.vision_ligne_gauche), screen_height), (0, 255, 0), 10)
+        cv2.line(img, (int(constants.Proprietes.vision_ligne_droite), 0), (int(constants.Proprietes.vision_ligne_droite), screen_height), (0, 255, 0), 10)
 
         # (optional) send some image back to the dashboard
         outputStream.putFrame(img)

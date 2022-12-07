@@ -41,8 +41,8 @@ class _Proprietes:
     aligner_vitesse = ntproperty("/Proprietes/Tirer/aligner_vitesse", 0.1, writeDefault=True)
     aligner_distance = ntproperty("/Proprietes/Tirer/aligner_distance", 0.1, writeDefault=True)
 
-    vision_ligne_gauche = ntproperty("/Proprietes/Vision/vision_ligne_gauche", 20, writeDefault=True)
-    vision_ligne_droite = ntproperty("/Proprietes/Vision/vision_ligne_droite", 100, writeDefault=True)
+    vision_ligne_gauche = ntproperty("/Proprietes/Vision/vision_ligne_gauche", 350, writeDefault=True)
+    vision_ligne_droite = ntproperty("/Proprietes/Vision/vision_ligne_droite", 450, writeDefault=True)
 
 
 
