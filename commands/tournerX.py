@@ -12,7 +12,7 @@ from utils.safecommandbase import SafeCommandBase
 
 class TournerX(SafeCommandBase):
     def __init__(self, drive: BasePilotable, angle: float, speed: float):
-        self.setname("TournerX")
+        self.setName("TournerX")
         super().__init__()
         self.angle = angle
         self.drive = drive

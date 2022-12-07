@@ -23,7 +23,7 @@ class BasePilotable(commands2.SubsystemBase):
     use_navx = False
 
     def __init__(self) -> None:
-        self.setname("BasePilotable")
+        self.setName("BasePilotable")
         super().__init__()
         # TODO correct mesurements
         self.x_wheelbase = 0.58 / 2
