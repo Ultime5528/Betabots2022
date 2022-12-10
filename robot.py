@@ -28,22 +28,21 @@ class Robot(commands2.TimedCommandRobot):
         self.xbox_controller = wpilib.Joystick(1)
 
         self.base_pilotable.setDefaultCommand(Piloter(self.base_pilotable, self.stick, self.xbox_controller))
-        JoystickButton(self.xbox_controller, 1).whileHeld((TirerProche(self.tireur)))
-        JoystickButton(self.xbox_controller, 2).whileHeld((TirerLoin(self.tireur)))
-        # Bouger d'un cube
-        JoystickButton(self.stick, 3).whenPressed(AvancerX(self.base_pilotable, 0, 0.4, 0, 0.5))
-        JoystickButton(self.stick, 4).whenPressed(AvancerX(self.base_pilotable, 0, -0.4, 0, 0.5))
-
-        # JoystickButton(self.xbox_controller, 1).whenPressed((Auto4Cubes(self.base_pilotable, self.tireur)))
-        # JoystickButton(self.stick, 11).whenPressed(TournerX(self.base_pilotable, 90, 0.5))
+        # JoystickButton(self.stick, 11).whenPressed(TournerX(self.base_pilotable, 90, 0.15))
         # JoystickButton(self.stick, 12).whenPressed(TournerX(self.base_pilotable, -90, 0.5))
-        # JoystickButton(self.stick, 4).whenPressed((AvancerX(self.base_pilotable, 1, -1, 0.1, 0.2)))
 
-        # JoystickButton(self.stick, 1).whenPressed((TirerLoin(self.tireur, False)))
-        # wpilib.SmartDashboard.putData("Commandes/AlignerUltrason", AlignerUltrason(self.base_pilotable))
-        # wpilib.SmartDashboard.putData("Commandes/Tourner", AlignerUltrason(self.base_pilotable))
+        JoystickButton(self.stick, 4).whenPressed((Auto4Cubes(self.base_pilotable, self.tireur)))
+        #JoystickButton(self.stick, 4).whenPressed((AvancerX(self.base_pilotable, 1, -1, 0.1, 0.2)))
 
-        # wpilib.SmartDashboard.putData("Commandes/TournerX", TournerX(self.base_pilotable, 90, 0.1))
+        # JoystickButton(self.stick, 5).whileHeld((TirerProche(self.tireur)))
+        # JoystickButton(self.stick, 6).whileHeld((TirerLoin(self.tireur)))
+        wpilib.SmartDashboard.putData("Commandes/AlignerUltrason", AlignerUltrason(self.base_pilotable))
+        wpilib.SmartDashboard.putData("Commandes/Tourner", AlignerUltrason(self.base_pilotable))
+
+        wpilib.SmartDashboard.putData("Commandes/TournerX", TournerX(self.base_pilotable, 90, 0.1))
+
+    def autonomousInit(self):
+        Auto4Cubes(self.base_pilotable, self.tireur)
 
 
 if __name__ == "__main__":

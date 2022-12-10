@@ -1,6 +1,3 @@
-import wpilib
-
-import constants
 from utils.safecommandbase import SafeCommandBase
 from subsystems.tireur import Tireur
 
